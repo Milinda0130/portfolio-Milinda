@@ -133,7 +133,64 @@
             font-size: 1.5rem;
         }
 
-        /* Main Section */
+     
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes hoverGlow {
+    from {
+        box-shadow: 0 0 0 rgba(0, 188, 212, 0);
+    }
+    to {
+        box-shadow: 0 0 15px rgba(0, 188, 212, 0.6);
+    }
+}
+
+/* Apply animation to nav */
+nav {
+    animation: fadeInDown 0.6s ease forwards;
+}
+
+/* Animate logo on load */
+.logo {
+    animation: fadeIn 1s ease forwards;
+}
+
+/* Animate nav links on load */
+nav ul li a {
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+    animation-delay: 0.3s;
+}
+
+/* Add animation on hover */
+nav ul li a:hover::after {
+    animation: fadeIn 0.3s ease forwards;
+}
+
+/* Button hover animation glow */
+nav button:hover {
+    animation: hoverGlow 0.3s ease-in-out forwards;
+}
+
+   /* Main Section */
         .main {
             min-height: 100vh;
             display: flex;
@@ -211,6 +268,45 @@
             border: 3px solid var(--sky-blue);
             box-shadow: 0 20px 40px rgba(0, 188, 212, 0.2);
         }
+        .main .left button {
+    animation: buttonPop 0.5s ease-in-out;
+}
+        @keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes buttonPop {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+
 
         /* Skills Section */
  .experience {
@@ -372,6 +468,63 @@
     }
 }
 
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeInUpOnce {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.timeline-item {
+  opacity: 0;               /* Start hidden */
+  transform: translateY(40px);
+  transition: none;         /* Prevent flicker */
+}
+
+.timeline-item.animate {
+  animation: fadeInUpOnce 0.8s forwards ease-in-out;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.experience {
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.section-header h2 {
+    animation: zoomIn 1s ease-in-out;
+}
+
+.timeline-item {
+    animation: fadeInUp 1s ease-in-out;
+}
 
         /* Resume Section */
         .resume {
@@ -519,6 +672,33 @@
             color: var(--light-sky-blue);
         }
 
+        /* Animation keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Initial hidden state */
+.resume, 
+.portfolio, 
+.portfo-items .item {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* Animate with fadeInUp */
+.resume.animate,
+.portfolio.animate,
+.portfo-items .item.animate {
+  animation: fadeInUp 0.8s forwards ease-in-out;
+}
+
         /* Contact Section */
         .contact {
             padding: var(--spacing-xl) var(--spacing-md);
@@ -605,6 +785,8 @@
             opacity: 0.6;
             cursor: not-allowed;
         }
+
+        
 
           .footer {
             background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
